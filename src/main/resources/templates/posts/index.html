@@ -6,13 +6,14 @@
 <body>
 <nav th:insert="partials/partials :: navbar"></nav>
 
-<!--bootstrap table with a loop for all of the posts-->
-<table>
-    <tr th:each="post : ${posts}">
-        <td th:text="${post.title}"></td>
-        <td th:text="${post.body}"></td>
-    </tr>
-</table>
+<div class="container">
+    <table class="table table-striped">
+        <tr th:each="post : ${posts}">
+            <td class="col" th:text="${post.title}">Post title goes here</td>
+            <td class="col" th:text="${post.body}">Post body goes here</td>
+        </tr>
+    </table>
+</div>
 
 <footer th:insert="partials/partials :: footer"></footer>
 <div th:insert="partials/partials :: bootstrapJs"></div>

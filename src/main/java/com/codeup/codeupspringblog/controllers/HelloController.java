@@ -26,11 +26,11 @@ class HelloController {
         return "Hello, " + firstname + " " + lastname + "!";
     }
 
-    @GetMapping("/dice")
-    @ResponseBody
-    public String rollDice(){
-        int diceRoll = (int) (Math.random() * 6) + 1;
-        return "roll-result: " + diceRoll;
-    }
+//    @GetMapping("/dice")
+//    @ResponseBody
+//    public String rollDice(){
+//        int diceRoll = (int) (Math.random() * 6) + 1;
+//        return "roll-result: " + diceRoll;
+//    }
 
 }

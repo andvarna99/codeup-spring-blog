@@ -30,7 +30,7 @@ class MathController {
 
     @GetMapping("/divide/{num1}/by/{num2}")
     @ResponseBody
-    public String rollDice(@PathVariable int num1, @PathVariable int num2){
+    public String divide(@PathVariable int num1, @PathVariable int num2){
         int div = num1 / num2;
         return num1 + " / " + num2 + " = " + div;
     }

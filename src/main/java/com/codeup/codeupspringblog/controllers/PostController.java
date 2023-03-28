@@ -1,12 +1,12 @@
 package com.codeup.codeupspringblog.controllers;
 
+import com.codeup.codeupspringblog.models.Post;
+import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
-import lombok.AllArgsConstructor;
+import com.codeup.codeupspringblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,8 +15,11 @@ import java.util.List;
 class PostController {
     private final PostRepository postDao;
 
-    public PostController(PostRepository postDao) {
+    private final UserRepository userDao;
+
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
@@ -30,22 +33,26 @@ class PostController {
     public String postIndexPageId(@PathVariable long id, Model model) {
         Post post = postDao.findById(id).get();
 
+
         model.addAttribute("title", post.getTitle());
         model.addAttribute("body", post.getBody());
+        model.addAttribute("email",post.getUser().getEmail());
         return "posts/show";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
     public String postIndexPageCreate() {
-        return "create";
+        return "posts/create";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String postIndexPageCreatePost(@RequestParam String title, @RequestParam String body) {
         Post post = new Post();
+        User user = userDao.findById(1L).get();
 
         post.setTitle(title);
         post.setBody(body);
+        post.setUser(user);
 
         System.out.println(post);
         postDao.save(post);

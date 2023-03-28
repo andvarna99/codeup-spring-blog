@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="partials/partials :: head" >
+    <meta charset="UTF-8">
+    <title>Create a Post</title>
+</head>
+<body>
+<nav th:insert="partials/partials :: navbar"></nav>
+
+<form class="container" method="POST" action="/posts/create">
+  <h1 class="text-center">Create a new Post</h1>
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title">
+  </div>
+  <div class="mb-3">
+    <label for="body" class="form-label">Body</label>
+    <textarea class="form-control" id="body" name="body"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+<footer th:insert="partials/partials :: footer"></footer>
+<div th:insert="partials/partials :: bootstrapJs"></div>
+</body>
+</html>

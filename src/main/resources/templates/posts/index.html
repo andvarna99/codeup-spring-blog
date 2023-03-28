@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:insert="partials/partials :: head" >
-    <title>Title</title>
+    <title>All Posts</title>
 </head>
 <body>
 <nav th:insert="partials/partials :: navbar"></nav>
 
 <div class="container">
+    <h1 class="text-center p-3">Posts</h1>
     <table class="table table-striped">
         <tr th:each="post : ${posts}">
-            <td class="col" th:text="${post.title}">Post title goes here</td>
+            <td class="col" ><a th:href="@{'posts/'+ ${post.id}}" th:text="${post.title}">Post title goes here</a></td>
             <td class="col" th:text="${post.body}">Post body goes here</td>
         </tr>
     </table>

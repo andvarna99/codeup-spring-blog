@@ -4,10 +4,7 @@ import com.codeup.codeupspringblog.repositories.PostRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +21,8 @@ class PostController {
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
     public String postIndexPage(Model model) {
-        List<Post>posts = new ArrayList<>();
-        posts.add(new Post(1,"title 1","body of post 1"));
-        posts.add(new Post(2,"title 2","body of post 2"));
-        model.addAttribute("posts",posts);
+        List<Post>posts = postDao.findAll();
+        model.addAttribute("posts", posts);
         return "posts/index";
     }
 
@@ -41,16 +36,20 @@ class PostController {
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    @ResponseBody
     public String postIndexPageCreate() {
-
-        return "This is the view for the form for the create a post page!";
+        return "create";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    @ResponseBody
-    public String postIndexPageCreatePost() {
-        return "This is where we will create a post/!";
+    public String postIndexPageCreatePost(@RequestParam String title, @RequestParam String body) {
+        Post post = new Post();
+
+        post.setTitle(title);
+        post.setBody(body);
+
+        System.out.println(post);
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
 }

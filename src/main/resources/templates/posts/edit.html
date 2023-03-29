@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/partials :: head" >
+    <meta charset="UTF-8">
+    <title>Edit a Post</title>
+</head>
+<body>
+<nav th:insert="partials/partials :: navbar"></nav>
+
+<div class="container" id="edit-post">
+  <div  class="card border-secondary">
+    <form th:method="POST" th:action="@{/posts/create}" th:object="${post}">
+        <div class="card-header">
+<!--          <label class="form-label">Title</label>-->
+          <input th:field="*{title}" type="text" class="form-control">
+        </div>
+      <div class="card-body">
+        <div class="mb-3">
+<!--          <label class="form-label">Body</label>-->
+          <textarea th:field="*{body}" class="form-control"></textarea>
+        </div>
+        <input th:type="hidden" th:field="*{id}">
+      </div>
+      <div class="card-footer">
+      <button type="submit" class="btn btn-primary">Edit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer th:insert="partials/partials :: footer"></footer>
+<div th:insert="partials/partials :: bootstrapJs"></div>
+
+</body>
+</html>

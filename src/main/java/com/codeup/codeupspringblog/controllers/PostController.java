@@ -37,26 +37,34 @@ class PostController {
         model.addAttribute("title", post.getTitle());
         model.addAttribute("body", post.getBody());
         model.addAttribute("email",post.getUser().getEmail());
+        model.addAttribute("id", post.getId());
         return "posts/show";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-    public String postIndexPageCreate() {
+    public String postPageCreate(Model model) {
+        model.addAttribute("post",new Post());
         return "posts/create";
     }
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-    public String postIndexPageCreatePost(@RequestParam String title, @RequestParam String body) {
-        Post post = new Post();
+    public String postPageCreatePost(@ModelAttribute Post post) {
+//        Post post = new Post();
+//        model.addAttribute("post",post);
         User user = userDao.findById(1L).get();
-
-        post.setTitle(title);
-        post.setBody(body);
+//
+//        post.setTitle(title);
+//        post.setBody(body);
         post.setUser(user);
 
-        System.out.println(post);
+//        System.out.println(post);
         postDao.save(post);
         return "redirect:/posts";
     }
 
+    @RequestMapping(path = "/posts/edit/{id}", method = RequestMethod.GET)
+    public String postPageEdit(Model model, @PathVariable long id) {
+        model.addAttribute("post",postDao.findById(id));
+        return "posts/edit";
+    }
 }

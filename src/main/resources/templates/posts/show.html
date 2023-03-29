@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="partials/partials :: head" >
     <title>Individual Post</title>
 </head>
@@ -7,19 +7,24 @@
 <nav th:insert="partials/partials :: navbar"></nav>
 
 <!--single post goes here-->
-<div class="container text-center p-3">
-    <div class="card text-center">
-        <div class="card-header">
-            <h1><span th:text="${title}">Title of post goes here</span></h1>
-        </div>
-        <div class="card-body">
-            <p><span th:text="${body}">Body of post goes here</span></p>
-
-
-            <p><b>Email: </b><span th:text="${email}">Email of user who created post goes here</span></p>
+<div id="show-posts">
+    <div class="container text-center p-3 " >
+        <div class="card border-secondary">
+            <div class="card-header">
+                <h1><span th:text="${title}">Title of post goes here</span></h1>
+            </div>
+            <div class="card-body">
+                <p class="pt-3 pb-3"><span th:text="${body}">Body of post goes here</span></p>
+                <hr>
+                <p class="pt-1"><b>Created by: </b><span th:text="${email}">Email of user who created post goes here</span></p>
+            </div>
+            <div class="card-footer">
+                    <a th:href="@{'edit/'+ ${id}}" class="btn btn-primary">Edit</a>
+            </div>
         </div>
     </div>
 </div>
+
 <footer th:insert="partials/partials :: footer"></footer>
 <div th:insert="partials/partials :: bootstrapJs"></div>
 </body>

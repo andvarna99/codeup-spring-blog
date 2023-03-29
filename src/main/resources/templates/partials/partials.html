@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <!--  bootstrap-->
@@ -28,8 +28,8 @@
         </nav>
     </nav>
 
-    <footer th:fragment="footer">
-        <div class="bg-dark text-center text-white fixed-bottom">
+    <footer th:fragment="footer" >
+        <div class="bg-dark text-center text-white position-absolute top-100 w-100 pt-3">
             <div class="container p-2">
                 <section class="mb-2">
                     <a class="btn btn-outline-light btn-floating m-1" href="https://facebook.com" role="button">

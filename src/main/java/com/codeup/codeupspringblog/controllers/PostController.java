@@ -33,7 +33,7 @@ class PostController {
     public String postIndexPageId(@PathVariable long id, Model model) {
         Post post = postDao.findById(id).get();
 
-
+//        model.addAttribute("posts", post);
         model.addAttribute("title", post.getTitle());
         model.addAttribute("body", post.getBody());
         model.addAttribute("email",post.getUser().getEmail());

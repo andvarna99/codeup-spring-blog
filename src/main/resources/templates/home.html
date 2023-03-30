@@ -6,8 +6,37 @@
 <body class="background">
     <nav th:insert="partials/partials :: navbar"></nav>
 
-    <div id="welcome">
+    <div id="welcome" class="container-fluid w-100">
         <h1 class="text-center">Welcome to the Blog Post Application!</h1>
+
+<!--        <div class="row ">-->
+
+
+<!--        <span class="col card container-fluid h-75">-->
+<!--            <div class="card-header">-->
+<!--                <h1 class="text-center ">Posts</h1>-->
+<!--            </div>-->
+<!--            <div class="card-body">-->
+<!--                <table class="table table-striped border">-->
+<!--                    <thead>-->
+<!--                        <tr>-->
+<!--                            <th scope="col">Title</th>-->
+<!--                            <th scope="col">Body</th>-->
+<!--                        </tr>-->
+<!--                    </thead>-->
+<!--                    <tr th:each="post : ${posts}">-->
+<!--                        <td class="col" ><a th:href="@{'posts/'+ ${post.id}}" th:text="${post.title}">Post title goes here</a></td>-->
+<!--                        <td class="col" th:text="${post.body}">Post body goes here</td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </span>-->
+
+<!--        <span class="col card container pb-4 h-25">-->
+
+<!--        </span>-->
+
+<!--        </div>-->
     </div>
 <!--    <img class="bg-image" src="/static/img/succulent_background.jpg" height="100vh" width="100vh">-->
 

@@ -11,7 +11,7 @@
   <div class="col" id="loginPage">
   </div>
 
-  <div class="col mt-2">
+  <div class="col mt-5">
   <h2 class="text-center">Create an account</h2>
   <form class="container" th:action="@{/sign-up}" method="POST" th:object="${user}">
     <label class="form-label" for="username">Username</label>
@@ -23,7 +23,9 @@
     <label class="form-label" for="password">Password</label>
     <input class="form-control" id="password" type="password" th:field="*{password}" />
 
-    <input class="btn mt-3" value="Sign me up!" type="submit" />
+    <div class="d-grid gap-2">
+      <input class="btn mt-3" value="Sign me up!" type="submit" />
+    </div>
   </form>
   </div>
 

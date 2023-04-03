@@ -24,7 +24,9 @@
       </div>
       <input th:type="hidden" th:field="*{id}">
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+      <div class="d-grid gap-2">
       <button type="submit" class="btn ">Create</button>
+      </div>
     </form>
   </div>
 </div>

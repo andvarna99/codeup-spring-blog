@@ -43,6 +43,7 @@
     }
     .btn:hover{
         background-color: #946166 !important;
+        color:white;
     }
 
     /*post title link color*/

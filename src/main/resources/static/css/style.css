@@ -1,13 +1,52 @@
+
+    /*welcome page background image*/
     .background{
-    background: url("../img/succulent_background.jpg") no-repeat;
+    background: url("../img/floral_background.jpg") no-repeat;
     height:100vh;
     width: 100vw;
     background-size: cover;
     }
 
+    /*login page background image*/
+    #loginPage{
+        background: url("../img/flowers.jpg") no-repeat;
+        height:100vh;
+        width:50vw;
+        background-size: cover;
+    }
+
+    #createPage{
+        background: url("../img/leafs.jpg") no-repeat;
+        height:100vh;
+        width:50vw;
+        background-size: cover;
+    }
+
+    /*padding on top of pages*/
     #welcome, #all-posts, #show-posts, #create-post, #edit-post{
         /*padding-bottom: 75vh;*/
         padding-top: 30px;
     }
 
+    /*fonts*/
+    #homePage, #welcome, h1{
+        font-family: 'Berkshire Swash', cursive;
+    }
+    .nav-item, #copyright, .form-label, h2, .btn, .postBody, .postTitle{
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /*button color*/
+    .btn, .btn:active, .btn:visited{
+        background-color: #934c53 !important;
+        color: white;
+    }
+    .btn:hover{
+        background-color: #946166 !important;
+    }
+
+    /*post title link color*/
+    .postTitle{
+        color:#934c53;
+    }
 

@@ -48,12 +48,6 @@ public class SecurityConfiguration {
                 .logout()
                 .logoutSuccessUrl("/") // append a query string value
 
-                /* Pages that can be viewed without having to log in */
-                .and()
-                .authorizeHttpRequests()
-                .requestMatchers("/", "/posts", "/posts/{id}", "/sign-up", "/css/**", "/js/**") // anyone can see home, the posts pages, sign up, and css and js files
-                .permitAll()
-
                 /* Pages that require authentication */
                 .and()
                 .authorizeHttpRequests()
@@ -62,6 +56,12 @@ public class SecurityConfiguration {
                         "/posts/edit/{id}" // only authenticated users can edit posts
                 )
                 .authenticated()
+
+                /* Pages that can be viewed without having to log in */
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers("/", "/posts", "/posts/{id}", "/sign-up", "/css/**", "/js/**", "/img/**") // anyone can see home, the posts pages, sign up, and css and js files
+                .permitAll()
         ;
         return http.build();
     }

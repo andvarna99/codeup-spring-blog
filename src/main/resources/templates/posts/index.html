@@ -16,8 +16,8 @@
             </tr>
         </thead>
         <tr th:each="post : ${posts}">
-            <td class="col" ><a th:href="@{'posts/'+ ${post.id}}" th:text="${post.title}">Post title goes here</a></td>
-            <td class="col" th:text="${post.body}">Post body goes here</td>
+            <td class="col" ><a class="postTitle" th:href="@{'posts/'+ ${post.id}}" th:text="${post.title}">Post title goes here</a></td>
+            <td class="col postBody" th:text="${post.body}">Post body goes here</td>
         </tr>
     </table>
 </div>

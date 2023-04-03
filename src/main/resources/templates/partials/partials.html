@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <!--  bootstrap-->
@@ -8,26 +8,34 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <!--font awesome-->
     <script src="https://kit.fontawesome.com/a88297ca40.js" crossorigin="anonymous"></script>
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav th:fragment="navbar" >
-        <nav class="nav navbar navbar-dark bg-dark sticky-top mb-3">
+        <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">Home</a>
+                <a class="navbar-brand" href="/" id="homePage">BlogScape</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="/posts">Blog Posts</a>
-                        <a class="nav-link" href="/posts/create">Create Post</a>
-                        <a class="nav-link" sec:authorize="isAuthenticated()">
-                            <form th:action="@{/logout}" th:method="post">
-                                <button class="btn-link btn text-decoration-none text-secondary" >Logout</button>
+                    <ul class="navbar-nav mt-1">
+                        <li class="nav-item ">
+                            <a class="nav-link active" aria-current="page" href="/posts">Blog Posts</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/posts/create">Create Post</a>
+                        </li>
+                        <li class="nav-item ">
+                            <form class=" d-flex" th:action="@{/logout}" th:method="post" sec:authorize="isAuthenticated()">
+                                <button class="btn-link text-decoration-none nav-link" >Logout</button>
                             </form>
-                        </a>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -62,7 +70,7 @@
                     </a>
                 </section>
             </div>
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <div id="copyright" class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2023 Copyright
             </div>
         </div>

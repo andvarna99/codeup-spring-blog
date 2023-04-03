@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/partials :: head" >
   <meta charset="UTF-8" />
   <title>Sign up</title>
 </head>
 <body>
-<h1>Create an account</h1>
-<form th:action="@{/sign-up}" method="POST" th:object="${user}">
-  <label for="username">Username</label>
-  <input id="username" th:field="*{username}" />
+<nav th:insert="partials/partials :: navbar"></nav>
 
-  <label for="email">Email</label>
-  <input id="email" th:field="*{email}" />
+<div class="row mb-2">
+  <div class="col" id="loginPage">
+  </div>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" th:field="*{password}" />
+  <div class="col mt-2">
+  <h2 class="text-center">Create an account</h2>
+  <form class="container" th:action="@{/sign-up}" method="POST" th:object="${user}">
+    <label class="form-label" for="username">Username</label>
+    <input class="form-control" id="username" th:field="*{username}" />
 
-  <input value="Sign me up!" type="submit" />
-</form>
+    <label class="form-label" for="email">Email</label>
+    <input class="form-control" id="email" th:field="*{email}" />
+
+    <label class="form-label" for="password">Password</label>
+    <input class="form-control" id="password" type="password" th:field="*{password}" />
+
+    <input class="btn mt-3" value="Sign me up!" type="submit" />
+  </form>
+  </div>
+
+
+</div>
+<footer th:insert="partials/partials :: footer"></footer>
+<div th:insert="partials/partials :: bootstrapJs"></div>
 </body>
 </html>

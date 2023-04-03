@@ -25,8 +25,8 @@ class PostController {
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
     public String postIndexPage(Model model) {
-        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("userName", loggedInUser.getUsername());
+//        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        model.addAttribute("userName", loggedInUser.getUsername());
         List<Post>posts = postDao.findAll();
         model.addAttribute("posts", posts);
         return "posts/index";

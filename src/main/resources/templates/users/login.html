@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="partials/partials :: head" >
   <meta charset="UTF-8" />
   <title>Log In</title>
 </head>
 <body>
-<h1>Log In</h1>
-<div th:if="${param.error}">
-  Invalid Username and Password.
+<nav th:insert="partials/partials :: navbar"></nav>
+
+<div class="row mb-2 ">
+  <div class="col" id="loginPage">
+  </div>
+
+  <div class="container col mt-2">
+    <h2 class="text-center">Log In</h2>
+    <div th:if="${param.error}">
+      Invalid Username and Password.
+    </div>
+    <div th:if="${param.logout}">
+      You have been logged out.
+    </div>
+
+    <form class="container" th:action="@{/login}" method="post">
+      <label class="form-label" for="username">Username</label>
+      <input class="form-control" id="username" name="username" type="text" />
+
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control" id="password" name="password" type="password" />
+
+      <input class="btn mt-3" type="submit" value="Log In" />
+    </form>
+  </div>
 </div>
-<div th:if="${param.logout}">
-  You have been logged out.
-</div>
-
-<form th:action="@{/login}" method="post">
-  <label for="username">Username</label>
-  <input id="username" name="username" type="text" />
-
-  <label for="password">Password</label>
-  <input id="password" name="password" type="password" />
-
-  <input type="submit" value="Log In" />
-</form>
+<footer th:insert="partials/partials :: footer"></footer>
+<div th:insert="partials/partials :: bootstrapJs"></div>
 </body>
 </html>

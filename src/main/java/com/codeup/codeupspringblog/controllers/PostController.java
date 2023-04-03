@@ -5,13 +5,14 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-
+@RequiredArgsConstructor
 @Controller
 class PostController {
     private final PostRepository postDao;
@@ -19,12 +20,6 @@ class PostController {
     private final UserRepository userDao;
 
     private final EmailService emailService;
-
-    public PostController(PostRepository postDao, UserRepository userDao, EmailService emailService) {
-        this.postDao = postDao;
-        this.userDao = userDao;
-        this.emailService = emailService;
-    }
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
     public String postIndexPage(Model model) {
@@ -67,4 +62,6 @@ class PostController {
         model.addAttribute("post",postDao.findById(id));
         return "posts/edit";
     }
+
+
 }

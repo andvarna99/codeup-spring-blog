@@ -6,6 +6,7 @@ import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Controller
 class PostController {
+
     private final PostRepository postDao;
 
     private final UserRepository userDao;
@@ -23,6 +25,8 @@ class PostController {
 
     @RequestMapping(path = "/posts", method = RequestMethod.GET)
     public String postIndexPage(Model model) {
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        model.addAttribute("userName", loggedInUser.getUsername());
         List<Post>posts = postDao.findAll();
         model.addAttribute("posts", posts);
         return "posts/index";
@@ -48,7 +52,8 @@ class PostController {
 
     @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     public String postPageCreatePost(@ModelAttribute Post post) {
-        User user = userDao.findById(1L).get();
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userDao.findById(loggedInUser.getId()).get();
 
         post.setUser(user);
 

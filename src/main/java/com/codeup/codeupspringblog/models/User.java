@@ -29,4 +29,12 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @ToString.Exclude
     private List <Post> posts;
+
+    //this is a constructor that lets us duplicate a user
+    public User(User copy) {
+        id = copy.id; // This line is SUPER important! Many things won't work if it's absent
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 }
